@@ -1,0 +1,35 @@
+module mux (
+input wire D0;
+input wire D1;
+input wire mux;
+output reg   Y ;
+);
+always @() begin
+Y = D0*(~mux) + D1*mux;    
+end
+endmodule   
+
+`timescale 1ps/1ps
+module tb;
+reg D0,D1,mux;
+wire Y;
+integer i,j,k;
+mux m1(
+.D0(D0),
+.D1(D1),
+.mux(mux),
+.Y(Y)
+);
+initial begin
+for (i=0;i<2;i=i+1 ) begin
+for (j=0;j<2;j=j+1 ) begin
+for (k=0;k<2;k=k+1 ) begin
+D0 = k , D1 = j , mux = i;
+#10;
+$display("time  = %d, D0 = %b, D1 = %b, mux = %b, Y = %b"$time,D0,D1,mux,Y);
+end    
+end    
+end
+$finish;
+end    
+endmodule
