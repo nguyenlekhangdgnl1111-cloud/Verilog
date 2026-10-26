@@ -1,11 +1,16 @@
-//Example – no polymorphism
-#include "Isosceles_Triangle.h"
-IsoscelesTriangle::IsoscelesTriangle() : Triangle(){
-}
-IsoscelesTriangle::IsoscelesTriangle(double s1, double s2,
-double s3) : Triangle(s1, s2, s3){
-}
-void IsoscelesTriangle::print_triangle(void){
-cout << "Isosceles triangle: " << side1
-<< " - " << side2 << " - " << side3 << endl;
-}
+#ifndef TRIANGLE_H_
+#define TRIANGLE_H_
+#include <iostream>
+using namespace std;
+class Triangle {
+protected:
+double side1;
+double side2;
+double side3;
+public:
+Triangle();
+Triangle(double s1, double s2, double
+s3);
+void print_triangle(void);
+};
+#endif /* TRIANGLE_H_ */
