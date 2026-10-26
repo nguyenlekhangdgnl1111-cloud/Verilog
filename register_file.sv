@@ -1,11 +1,12 @@
 //Example – no polymorphism
-#include "Right_Triangle.h"
-RightTriangle::RightTriangle() : Triangle(){
-}
-RightTriangle::RightTriangle(double s1, double s2, double
-s3) : Triangle(s1, s2, s3){
-}
-void RightTriangle::print_triangle(void){
-cout << "Right triangle: " << side1 << " - "
-<< side2 << " - " << side3 << endl;
-}
+#ifndef RIGHT_TRIANGLE_H_
+#define RIGHT_TRIANGLE_H_
+#include "Triangle.h"
+class RightTriangle: public Triangle {
+public:
+RightTriangle();
+RightTriangle(double s1, double s2,
+double s3);
+void print_triangle(void);
+};
+#endif /* RIGHT_TRIANGLE_H_ */
