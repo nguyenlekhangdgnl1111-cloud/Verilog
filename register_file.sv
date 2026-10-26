@@ -1,16 +1,12 @@
-#ifndef TRIANGLE_H_
-#define TRIANGLE_H_
-#include <iostream>
-using namespace std;
-class Triangle {
-protected:
-double side1;
-double side2;
-double side3;
+//Example – no polymorphism
+#ifndef RIGHT_TRIANGLE_H_
+#define RIGHT_TRIANGLE_H_
+#include "Triangle.h"
+class RightTriangle: public Triangle {
 public:
-Triangle();
-Triangle(double s1, double s2, double
-s3);
+RightTriangle();
+RightTriangle(double s1, double s2,
+double s3);
 void print_triangle(void);
 };
-#endif /* TRIANGLE_H_ */
+#endif /* RIGHT_TRIANGLE_H_ */
