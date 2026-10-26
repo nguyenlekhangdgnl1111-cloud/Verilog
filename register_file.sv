@@ -1,13 +1,11 @@
 //Example – no polymorphism
-#ifndef ISOSCELES_TRIANGLE_H_
-#define ISOSCELES_TRIANGLE_H_
-#include "Triangle.h"
-class IsoscelesTriangle: public
-Triangle {
-public:
-IsoscelesTriangle();
-IsoscelesTriangle(double s1,
-double s2, double s3);
-void print_triangle(void);
-};
-#endif /* ISOSCELES_TRIANGLE_H_ */
+#include "Isosceles_Triangle.h"
+IsoscelesTriangle::IsoscelesTriangle() : Triangle(){
+}
+IsoscelesTriangle::IsoscelesTriangle(double s1, double s2,
+double s3) : Triangle(s1, s2, s3){
+}
+void IsoscelesTriangle::print_triangle(void){
+cout << "Isosceles triangle: " << side1
+<< " - " << side2 << " - " << side3 << endl;
+}
