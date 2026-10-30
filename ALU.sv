@@ -1,49 +1,34 @@
-#ifndef RECT3_H_
-#define RECT3_H_
-class Rect3
+#include "Rect3.h"
+Rect3::Rect3()
 {
-private:
-double width;
-double length;
-public:
-// Exceptions
-class NegativeWidth
-{
-private:
-double value;
-public:
-NegativeWidth(double val)
-{
-value = val;
+setWidth(0.0);
+setLength(0.0);
 }
-double getValue()
+void Rect3::setWidth(double w)
 {
-return value;
+if (w >= 0)
+width = w;
+else
+throw NegativeWidth(w);
+return;
 }
-};
-class NegativeLength
+void Rect3::setLength(double l)
 {
-private:
-double value;
-public:
-NegativeLength(double val)
-{
-value = val;
+if (l >= 0)
+length = l;
+else
+throw NegativeLength(l);
+return;
 }
-double getValue()
+double Rect3::getWidth(void)
 {
-return value;
+return width;
 }
-};
-// Constructor
-Rect3();
-// Setters
-void setWidth(double w);
-void setLength(double l);
-// getters
-double getWidth(void);
-double getLength(void);
-// calculations
-double calcArea(void);
-};
-#endif /* RECT3_H_ */
+double Rect3::getLength(void)
+{
+return length;
+}
+double Rect3::calcArea(void)
+{
+return (width * length);
+}
