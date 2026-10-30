@@ -1,44 +1,49 @@
-#include "Rect2.h"
-#include<iostream>
-using namespace std;
-int main(void){
+#ifndef RECT3_H_
+#define RECT3_H_
+class Rect3
+{
+private:
 double width;
 double length;
-bool try_again;
-// create a rectangle
-Rect2 myRect;
-// get values
-while(1){
-cout << "Enter the rectangles width ";
-cin >> width;
-try_again = true;
-//Attempt to recover if necessary
-while(try_again){
-try{
-myRect.setWidth(width);
-try_again = false;// no exception thrown
+public:
+// Exceptions
+class NegativeWidth
+{
+private:
+double value;
+public:
+NegativeWidth(double val)
+{
+value = val;
 }
-catch(Rect2::NegativeWidth &){
-cout << "Please enter a non-negative value for width: 
-";
-cin >> width;
+double getValue()
+{
+return value;
 }
+};
+class NegativeLength
+{
+private:
+double value;
+public:
+NegativeLength(double val)
+{
+value = val;
 }
-cout << "Enter the rectangles length ";
-cin >> length;
-try_again = true;
-//Attempt to recover if necessary
-while(try_again){
-try{
-myRect.setLength(length);
-try_again = false;// no exception thrown
+double getValue()
+{
+return value;
 }
-catch(Rect2::NegativeLength &){
-cout << "Please enter a non-negative value for length: ";
-cin >> length;
-}
-}
-cout << "The area of the rectangle is: " << myRect.calcArea() << endl;
-}
-return 0;
-}
+};
+// Constructor
+Rect3();
+// Setters
+void setWidth(double w);
+void setLength(double l);
+// getters
+double getWidth(void);
+double getLength(void);
+// calculations
+double calcArea(void);
+};
+#endif /* RECT3_H_ */
