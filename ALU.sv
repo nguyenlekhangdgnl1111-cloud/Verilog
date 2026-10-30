@@ -1,34 +1,48 @@
 #include "Rect3.h"
-Rect3::Rect3()
-{
-setWidth(0.0);
-setLength(0.0);
+#include<iostream>
+using namespace std;
+int main(void){
+double width;
+double length;
+bool try_again;
+// create a rectangle
+Rect3 myRect;
+// get values
+while (1){
+cout << "Enter the rectangles width ";
+cin >> width;
+try_again = true;
+//Attempt to recover if necessary
+while (try_again){
+try{
+myRect.setWidth(width);
+try_again = false; // no exception thrown
 }
-void Rect3::setWidth(double w)
-{
-if (w >= 0)
-width = w;
-else
-throw NegativeWidth(w);
-return;
+catch (Rect3::NegativeWidth &exptn){
+cout << "You entered " << exptn.getValue() << endl;
+cout << "Please enter a non-negative value for width: ";
+cin >> width;
 }
-void Rect3::setLength(double l)
-{
-if (l >= 0)
-length = l;
-else
-throw NegativeLength(l);
-return;
 }
-double Rect3::getWidth(void)
+cout << "Enter the rectangles length ";
+cin >> length;
+try_again = true;
+//Attempt to recover if necessary
+while (try_again)
 {
-return width;
+try
+{
+myRect.setLength(length);
+try_again = false; // no exception thrown
 }
-double Rect3::getLength(void)
+catch (Rect3::NegativeLength &exptn)
 {
-return length;
+cout << "You entered " << exptn.getValue() << endl;
+cout << "Please enter a non-negative value for length: ";
+cin >> length;
 }
-double Rect3::calcArea(void)
-{
-return (width * length);
+}
+cout << "The area of the rectangle is: " << myRect.calcArea() << endl;
+}
+return 0;
 }
